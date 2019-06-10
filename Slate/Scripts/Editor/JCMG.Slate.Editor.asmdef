@@ -1,0 +1,18 @@
+{
+    "name": "JCMG.Slate.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5f21fd9b40a30c346a62492466541aff"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

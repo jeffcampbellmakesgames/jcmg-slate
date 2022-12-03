@@ -16,7 +16,7 @@ namespace JCMG.Slate.Editor
         /// <summary>
         /// The semantic version
         /// </summary>
-        public const string VERSION = "0.1.1";
+        public const string VERSION = "0.1.2";
 
         /// <summary>
         /// The branch of GIT this package was published from.
@@ -36,6 +36,6 @@ namespace JCMG.Slate.Editor
         /// <summary>
         /// The UTC time this package was published at.
         /// </summary>
-        public const string PUBLISH_TIME = "12/03/2022 21:36:36";
+        public const string PUBLISH_TIME = "12/03/2022 22:10:23";
     }
 }

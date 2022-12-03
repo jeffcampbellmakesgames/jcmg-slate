@@ -19,7 +19,7 @@ MonoBehaviour:
   legacyPackageDestinationPath: 
   packageName: com.jeffcampbellmakesgames.slate
   displayName: JCMG Slate
-  packageVersion: 0.1.1
+  packageVersion: 0.1.2
   unityVersion: 2021.3.14f1
   description: A UI composition library for Unity
   category: UI
@@ -33,6 +33,8 @@ MonoBehaviour:
   dependencies:
   - packageName: com.jeffcampbellmakesgames.utility
     packageVersion: 0.1.1
+  - packageName: com.dbrizov.naughtyattributes
+    packageVersion: 2.1.4
   versionConstantsPath: Assets/JCMG/Slate/Scripts/Editor
   versionTemplateGuid: a28f7ed0e67764eefa82686861fcce74
   _id: bdff5410-11c9-4404-83d1-29b99992ef1d

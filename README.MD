@@ -18,7 +18,7 @@ Using this library in your project can be done in three ways:
 The package is available on the [openupm registry](https://openupm.com/). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
 
 ```
-openupm add com.jeffcampbellmakesgames.jcmg-slate
+openupm add com.jeffcampbellmakesgames.slate
 ```
 
 ### Install via GIT URL
@@ -28,7 +28,7 @@ Using the native Unity Package Manager introduced in 2017.2, you can add this li
 {
 	"dependencies": {
 		...
-		"com.jeffcampbellmakesgames.jcmg-slate" : "https://github.com/jeffcampbellmakesgames/jcmg-slate.git#release/stable",
+		"com.jeffcampbellmakesgames.slate" : "https://github.com/jeffcampbellmakesgames/jcmg-slate.git#release/stable",
 		...
 	}
 }

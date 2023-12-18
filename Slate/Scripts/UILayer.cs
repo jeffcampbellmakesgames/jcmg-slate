@@ -6,17 +6,24 @@ Proprietary and confidential
 Written by Jeff Campbell <mirraraenn@gmail.com>, 2020
 */
 
+using UnityEngine;
+
 namespace JCMG.Slate
 {
 	/// <summary>
-	/// Represents a set of distinct layers the UI might exist on.
+	/// Represents a distinct layers the UI might exist on.
 	/// </summary>
-	public enum UILayer
+	[CreateAssetMenu(
+		menuName = "JCMG/Slate/UI Layer",
+		fileName = "NewUILayer")]
+	public class UILayer : ScriptableObject
 	{
-		Main = 0,
-		Hud = 10,
-		Popup = 20,
-		Loading = 100,
-		Error = 200
+		/// <summary>
+		/// The sorting layer the UI should be on.
+		/// </summary>
+		public int SortingLayer => _sortingLayer;
+
+		[SerializeField]
+		private int _sortingLayer;
 	}
 }

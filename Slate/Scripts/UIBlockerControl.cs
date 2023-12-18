@@ -6,8 +6,13 @@ Proprietary and confidential
 Written by Jeff Campbell <mirraraenn@gmail.com>, 2022
 */
 using JCMG.Utility;
-using NaughtyAttributes;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#elif USE_NAUGHTY_ATTR
+using NaughtyAttributes;
+#endif
 
 namespace JCMG.Slate
 {
@@ -17,8 +22,14 @@ namespace JCMG.Slate
 	[AddComponentMenu("JCMG/Slate/Singletons/UIBlocker")]
 	public sealed class UIBlocker : Singleton<UIBlocker>
 	{
+		#if ODIN_INSPECTOR
+		[TitleGroup(RuntimeConstants.UI_REFS)]
+		[Required]
+		#elif USE_NAUGHTY_ATTR
 		[BoxGroup(RuntimeConstants.UI_REFS)]
-		[SerializeField, Required]
+		[Required]
+		#endif
+		[SerializeField]
 		private CanvasGroup _canvasGroup;
 
 		/// <summary>

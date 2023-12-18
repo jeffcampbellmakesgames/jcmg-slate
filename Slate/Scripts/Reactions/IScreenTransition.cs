@@ -8,7 +8,7 @@ namespace JCMG.Slate
 	public delegate void ScreenTransitionCallback();
 
 	/// <summary>
-	/// Represents a transition for a <see cref="UIScreen"/>.
+	/// Represents a transition for a <see cref="UIScreenBase"/>.
 	/// </summary>
 	public interface IScreenTransition
 	{

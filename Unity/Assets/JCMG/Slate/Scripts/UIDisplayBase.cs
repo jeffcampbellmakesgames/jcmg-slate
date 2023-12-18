@@ -29,5 +29,21 @@ namespace JCMG.Slate
 		/// Refreshes this UI display.
 		/// </summary>
 		public abstract void UpdateDisplay();
+
+		/// <summary>
+		/// Shows the UI display.
+		/// </summary>
+		public virtual void Show()
+		{
+			// No-op
+		}
+
+		/// <summary>
+		/// Hides the UI display.
+		/// </summary>
+		public virtual void Hide()
+		{
+			// No-op
+		}
 	}
 }

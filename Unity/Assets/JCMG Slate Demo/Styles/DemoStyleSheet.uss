@@ -1,0 +1,37 @@
+Button {
+    transition-property: all;
+    transition-duration: 0.33s;
+}
+
+Button:hover {
+    transition-property: scale;
+    scale: 1.05 1.05;
+    transition-duration: 0.33s;
+    transition-timing-function: ease-in-out;
+}
+
+Button:active {
+    transition-property: translate;
+    transition-timing-function: ease-out-bounce;
+    transition-duration: 0.33s;
+    scale: 1.1 1.1;
+}
+
+.start-button {
+    border-radius: 25px;
+    font-size: 36px;
+    -unity-font-style: normal;
+    background-color: rgb(77, 141, 183);
+    border-top-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-left-width: 3px;
+    border-color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 1px rgb(47, 47, 47);
+    color: rgb(255, 255, 255);
+    -unity-font-definition: url('project://database/Assets/JCMG%20Slate%20Demo/Fonts/lemon_milk/LEMONMILK-Regular.otf?fileID=12800000&guid=b0cfc284a9fbe43f89d276a6a76bceed&type=3#LEMONMILK-Regular');
+}
+
+.start-button:hover {
+    background-color: rgb(217, 124, 0);
+}

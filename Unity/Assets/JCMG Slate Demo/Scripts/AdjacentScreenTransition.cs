@@ -1,15 +1,18 @@
 using System;
 using DG.Tweening;
 using JCMG.Slate;
-using NaughtyAttributes;
 using ScriptableObjectArchitecture;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Demo
+#if USE_NAUGHTY_ATTR
+using NaughtyAttributes;
+#endif
+
+namespace JCMG_Slate_Demo
 {
 	/// <summary>
-	/// A scriptable screen transition that animates a <see cref="UIScreen"/> on or offscreen.
+	/// A scriptable screen transition that animates a <see cref="UIScreenBase"/> on or offscreen.
 	/// </summary>
 	[CreateAssetMenu(
 		fileName = "NewAdjacentScreenTransition",
@@ -17,13 +20,13 @@ namespace Demo
 	public sealed class AdjacentScreenTransition : ScreenTransitionBase
 	{
 		/// <summary>
-		/// Returns true if the screen reaction is triggering from a <see cref="UIScreen"/> being shown,
+		/// Returns true if the screen reaction is triggering from a <see cref="UIScreenBase"/> being shown,
 		/// otherwise false.
 		/// </summary>
 		private bool IsEntrance => _transitionType == TransitionType.Entrance;
 
 		/// <summary>
-		/// Returns true if the screen reaction is triggering from a <see cref="UIScreen"/> being hidden,
+		/// Returns true if the screen reaction is triggering from a <see cref="UIScreenBase"/> being hidden,
 		/// otherwise false.
 		/// </summary>
 		private bool IsExit => _transitionType == TransitionType.Exit;
@@ -63,8 +66,9 @@ namespace Demo
 		[SerializeField]
 		private float _duration;
 
-		[Min(0f)]
+		#if USE_NAUGHTY_ATTR
 		[DisableIf("IsAnimationCurveDefined")]
+		#endif
 		[SerializeField]
 		private Ease _easeType;
 

@@ -12,42 +12,39 @@ using System.Collections.Generic;
 namespace JCMG.Slate
 {
 	/// <summary>
-	/// The runtime UI manager containing all <see cref="UIScreen"/> instances.
+	/// The runtime UI manager containing all <see cref="UIScreenBase"/> instances.
 	/// </summary>
 	public static class UIScreenControl
 	{
 		/// <summary>
-		/// The runtime collection of all registered <see cref="UIScreen"/> instances.
+		/// The runtime collection of all registered <see cref="UIScreenBase"/> instances.
 		/// </summary>
-		private static readonly List<UIScreen> REGISTERED_UI_PANELS;
+		private static readonly List<IUIScreen> REGISTERED_UI_PANELS;
 
 		private const string COULD_NOT_FIND_SCREEN_ERROR_FORMAT = "Could not find UIPanel of type '{0}' in UIManager...";
 
 		static UIScreenControl()
 		{
-			REGISTERED_UI_PANELS = new List<UIScreen>();
+			REGISTERED_UI_PANELS = new List<IUIScreen>();
 		}
 
 		/// <summary>
-		/// Registers the <see cref="UIScreen"/> instance, if not already present.
+		/// Registers the <see cref="IUIScreen"/> instance, if not already present.
 		/// </summary>
-		public static void RegisterUIScreen(UIScreen screen)
+		public static void RegisterUIScreen<T>(T screen) where T : class, IUIScreen
 		{
 			if (REGISTERED_UI_PANELS.Contains(screen))
 			{
 				return;
 			}
 
-			// Set the Sorting order of the UIPanel's Canvas based on its index in the UILayerOrder.
-			screen.SetSortingOrder((int)screen.Layer);
-
 			REGISTERED_UI_PANELS.Add(screen);
 		}
 
 		/// <summary>
-		/// Registers the <see cref="UIScreen"/> instance if present.
+		/// Registers the <see cref="IUIScreen"/> instance if present.
 		/// </summary>
-		public static void UnregisterUIScreen(UIScreen screen)
+		public static void UnregisterUIScreen<T>(T screen)  where T : class, IUIScreen
 		{
 			if (!REGISTERED_UI_PANELS.Contains(screen))
 			{
@@ -58,10 +55,10 @@ namespace JCMG.Slate
 		}
 
 		/// <summary>
-		/// Returns the registered <see cref="UIScreen"/> instance of type <typeparamref name="T"/> if present. If none
+		/// Returns the registered <see cref="IUIScreen"/> instance of type <typeparamref name="T"/> if present. If none
 		/// is found, an exception is thrown.
 		/// </summary>
-		public static T GetPanel<T>() where T : UIScreen
+		public static T GetScreen<T>() where T : class, IUIScreen
 		{
 			for (var i = 0; i < REGISTERED_UI_PANELS.Count; i++)
 			{
@@ -75,10 +72,10 @@ namespace JCMG.Slate
 		}
 
 		/// <summary>
-		/// Returns the registered <see cref="UIScreen"/> instance of <see cref="Type"/> <paramref name="type"/> if
+		/// Returns the registered <see cref="IUIScreen"/> instance of <see cref="Type"/> <paramref name="type"/> if
 		/// present. If none is found, an exception is thrown.
 		/// </summary>
-		public static UIScreen GetPanel(Type type)
+		public static IUIScreen GetScreen(Type type)
 		{
 			for (var i = 0; i < REGISTERED_UI_PANELS.Count; i++)
 			{
@@ -92,10 +89,10 @@ namespace JCMG.Slate
 		}
 
 		/// <summary>
-		/// Returns true if the registered <see cref="UIScreen"/> instance of type <typeparamref name="T"/> is present,
+		/// Returns true if the registered <see cref="IUIScreen"/> instance of type <typeparamref name="T"/> is present,
 		/// otherwise returns false. If true, <paramref name="screen"/> will be initialized.
 		/// </summary>
-		public static bool TryGetPanel<T>(out T screen) where T : UIScreen
+		public static bool TryGetScreen<T>(out T screen) where T : class, IUIScreen
 		{
 			screen = null;
 			for (var i = 0; i < REGISTERED_UI_PANELS.Count; i++)

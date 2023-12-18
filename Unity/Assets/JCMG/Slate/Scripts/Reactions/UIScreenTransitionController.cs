@@ -6,15 +6,20 @@ Proprietary and confidential
 Written by Jeff Campbell <mirraraenn@gmail.com>, 2022
 */
 
-using NaughtyAttributes;
 using UnityEngine;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#elif USE_NAUGHTY_ATTR
+using NaughtyAttributes;
+#endif
 
 namespace JCMG.Slate
 {
 	/// <summary>
 	/// A component that handles any UX reactions to a panel being shown or hidden.
 	/// </summary>
-	[RequireComponent(typeof(UIScreen))]
+	[RequireComponent(typeof(UIScreenBase))]
 	[AddComponentMenu("JCMG/Slate/UIScreenTransitionController")]
 	public sealed class UIScreenTransitionController : MonoBehaviour
 	{
@@ -39,41 +44,78 @@ namespace JCMG.Slate
 		internal bool IsUsingHideScriptableTransition =>
 			_showTransitionSourceType == TransitionSourceType.ScriptableObject;
 
+		#if ODIN_INSPECTOR
+		[TitleGroup(RuntimeConstants.UI_REFS)]
+		[Required]
+		#elif USE_NAUGHTY_ATTR
 		[BoxGroup(RuntimeConstants.UI_REFS)]
-		[SerializeField, Required]
-		private UIScreen _screen;
+		[Required]
+		#endif
+		[SerializeField]
+		private UIScreenBase _screen;
 
+		#if ODIN_INSPECTOR
+		[TitleGroup(SHOW_TG)]
+		#elif USE_NAUGHTY_ATTR
 		[Space(5)]
-		[BoxGroup("Show Configuration")]
+		[BoxGroup(SHOW_TG)]
+		#endif
 		[SerializeField]
 		private TransitionSourceType _showTransitionSourceType;
 
-		[BoxGroup("Show Configuration")]
+		#if ODIN_INSPECTOR
+		[TitleGroup(SHOW_TG)]
 		[ShowIf("IsUsingShowScriptableTransition")]
+		#elif USE_NAUGHTY_ATTR
+		[BoxGroup(SHOW_TG)]
+		[ShowIf("IsUsingShowScriptableTransition")]
+		#endif
 		[SerializeField]
 		private ScreenTransitionBase showScreenTransition;
 
-		[BoxGroup("Show Configuration")]
+		#if ODIN_INSPECTOR
+		[TitleGroup(SHOW_TG)]
 		[HideIf("IsUsingShowScriptableTransition")]
+		#elif USE_NAUGHTY_ATTR
+		[BoxGroup(SHOW_TG)]
+		[HideIf("IsUsingShowScriptableTransition")]
+		#endif
 		[SerializeField]
 		private BehaviourScreenTransitionBase showBehaviourScreenTransition;
 
-		[BoxGroup("Hide Configuration")]
+		#if ODIN_INSPECTOR
+		[TitleGroup(HIDE_TG)]
+		#elif USE_NAUGHTY_ATTR
+		[BoxGroup(HIDE_TG)]
+		#endif
 		[SerializeField]
 		private TransitionSourceType _hideTransitionSourceType;
 
-		[BoxGroup("Hide Configuration")]
+		#if ODIN_INSPECTOR
+		[TitleGroup(HIDE_TG)]
 		[ShowIf("IsUsingHideScriptableTransition")]
+		#elif USE_NAUGHTY_ATTR
+		[BoxGroup(HIDE_TG)]
+		[ShowIf("IsUsingHideScriptableTransition")]
+		#endif
 		[SerializeField]
 		private ScreenTransitionBase hideScreenTransition;
 
+		#if ODIN_INSPECTOR
+		[TitleGroup(HIDE_TG)]
+		[HideIf("IsUsingHideScriptableTransition")]
+		#elif USE_NAUGHTY_ATTR
 		[BoxGroup("Hide Configuration")]
 		[HideIf("IsUsingHideScriptableTransition")]
+		#endif
 		[SerializeField]
 		private BehaviourScreenTransitionBase hideBehaviourScreenTransition;
 
+		private const string SHOW_TG = "Show Configuration";
+		private const string HIDE_TG = "Hide Configuration";
+
 		/// <summary>
-		/// Plays a transition to show the attached <see cref="UIScreen"/> instance; upon completion,
+		/// Plays a transition to show the attached <see cref="UIScreenBase"/> instance; upon completion,
 		/// <paramref name="onShowComplete"/> will be invoked.
 		/// </summary>
 		public void AnimateShowReaction(ScreenTransitionCallback onShowComplete)
@@ -90,7 +132,7 @@ namespace JCMG.Slate
 		}
 
 		/// <summary>
-		/// Plays a transition to hide the attached <see cref="UIScreen"/> instance; upon completion,
+		/// Plays a transition to hide the attached <see cref="UIScreenBase"/> instance; upon completion,
 		/// <paramref name="onHideComplete"/> will be invoked.
 		/// </summary>
 		public void AnimateHideReaction(ScreenTransitionCallback onHideComplete)
@@ -108,7 +150,7 @@ namespace JCMG.Slate
 
 		/// <summary>
 		/// Returns the <see cref="IScreenTransition"/> in-use for this instance for showing the attached
-		/// <see cref="UIScreen"/>.
+		/// <see cref="UIScreenBase"/>.
 		/// </summary>
 		private IScreenTransition GetShowScreenTransition()
 		{
@@ -119,7 +161,7 @@ namespace JCMG.Slate
 
 		/// <summary>
 		/// Returns the <see cref="IScreenTransition"/> in-use for this instance for hiding the attached
-		/// <see cref="UIScreen"/>.
+		/// <see cref="UIScreenBase"/>.
 		/// </summary>
 		private IScreenTransition GetHideScreenTransition()
 		{

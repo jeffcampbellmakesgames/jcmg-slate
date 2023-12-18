@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Releases]
+### [0.1.6] - 2023-12-18
+#### Added
+* Unity UI Toolkit can now be leveraged as UIScreens by creating a derived class of `UIScreenDocumentBase`.
+
+#### Changed
+* The minimum Unity version has been increased to `2022.3`.
+* `UIScreen` has been renamed to `UIScreenBase` and now implements `IUIScreen`.
+* The dependency on `JCMG.Utility` has been bumped to `v0.1.8`.
+
 ### [0.1.3] - 2022-12-04
 #### Fixed
 * Moved demo content out of package folder.

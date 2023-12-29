@@ -155,13 +155,15 @@ namespace JCMG.Slate
 		}
 
 		/// <inheritdoc />
-		public void Show(bool immediate = false)
+		public virtual void Show(bool immediate = false)
 		{
 			// If already visible, do nothing.
 			if (IsVisible)
 			{
 				return;
 			}
+
+			SetSortingOrder(_layer.SortingLayer);
 
 			_rootElement.style.display = _originalDisplayStyle;
 
@@ -183,7 +185,7 @@ namespace JCMG.Slate
 		}
 
 		/// <inheritdoc />
-		public void Hide(bool immediate = false)
+		public virtual void Hide(bool immediate = false)
 		{
 			// If already hidden, do nothing.
 			if (!IsVisible)
@@ -204,6 +206,11 @@ namespace JCMG.Slate
 			}
 
 			_isVisible = false;
+
+			// Set the sorting layer to be just behind the current one as there currently seems to be an issue if a
+			// UIDocument A is shown above another UIDocument B that is not hidden on the same layer, and then B is
+			// hidden, then A will not be interactable.
+			SetSortingOrder(_layer.SortingLayer - 1);
 
 			Hidden?.Invoke();
 		}

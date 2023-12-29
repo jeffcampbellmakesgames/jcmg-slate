@@ -198,6 +198,7 @@ namespace JCMG.Slate
 			ToggleInteractivity(_isInteractable);
 
 			_isShowing = false;
+			_isVisible = true;
 
 			Shown?.Invoke();
 		}
@@ -230,6 +231,7 @@ namespace JCMG.Slate
 		{
 			_canvas.enabled = false;
 			_isHiding = false;
+			_isVisible = false;
 
 			ToggleInteractivity(false);
 
@@ -244,7 +246,7 @@ namespace JCMG.Slate
 				_canvasGroup.interactable = false;
 				_canvasGroup.blocksRaycasts = false;
 			}
-			else if (IsVisible && _isInteractable)
+			else if (_isInteractable)
 			{
 				_canvasGroup.interactable = true;
 				_canvasGroup.blocksRaycasts = true;

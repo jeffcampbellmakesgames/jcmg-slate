@@ -1,5 +1,4 @@
 using JCMG.Slate;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace JCMG_Slate_Demo
@@ -28,7 +27,10 @@ namespace JCMG_Slate_Demo
 
 		private void OnPlayButtonClicked()
 		{
-			// No-op currently
+			var modeSelectionUIScreen = UIScreenControl.GetScreen<ModeSelectionUIScreenDocument>();
+			modeSelectionUIScreen.Show();
+
+			Hide();
 		}
 	}
 }

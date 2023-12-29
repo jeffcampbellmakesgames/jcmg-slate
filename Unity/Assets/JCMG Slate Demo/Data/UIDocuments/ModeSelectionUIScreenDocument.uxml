@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/JCMG/Slate/Uss/JCMGSlateStyle.uss?fileID=7433441132597879392&amp;guid=bafbaaf2a797f4fbd8b4529490bc9182&amp;type=3#JCMGSlateStyle" />
+    <Style src="project://database/Assets/JCMG%20Slate%20Demo/Styles/DemoStyleSheet.uss?fileID=7433441132597879392&amp;guid=8afb1a908cbdd423cb7380d422fe0498&amp;type=3#DemoStyleSheet" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-color: rgb(0, 211, 253);">
+        <ui:VisualElement name="Header" style="flex-grow: 1; height: 10%; justify-content: center; -unity-font-definition: url(&apos;project://database/Assets/JCMG%20Slate%20Demo/Fonts/lemon_milk/LEMONMILK-Bold.otf?fileID=12800000&amp;guid=3b0545b13cde842688a32ae025ca000d&amp;type=3#LEMONMILK-Bold&apos;); top: 25px;">
+            <ui:Label text="Mode Selection" style="-unity-text-align: lower-center; align-self: stretch; flex-grow: 1; font-size: 52px; width: 70%; position: absolute; left: 15%; right: 15%;" />
+            <ui:Button text="Back" name="BackButton" usage-hints="None" style="width: 75px; height: 75px; align-self: flex-end; right: 25px; border-left-color: rgb(72, 72, 72); border-right-color: rgb(72, 72, 72); border-top-color: rgb(72, 72, 72); border-bottom-color: rgb(72, 72, 72); border-top-width: 3px; border-right-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-top-left-radius: 25px; border-top-right-radius: 25px; border-bottom-right-radius: 25px; border-bottom-left-radius: 25px; font-size: 18px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Body" style="flex-grow: 1; height: 80%;">
+            <ui:VisualElement name="ButtonGroup" style="flex-grow: 1; align-self: center; width: 50%; justify-content: center; height: auto;">
+                <ui:Button text="Single Player" name="SinglePlayerButton" usage-hints="None" class="start-button" style="margin-top: 25px; margin-right: 25px; margin-bottom: 25px; margin-left: 25px;" />
+                <ui:Button text="Multiplayer" name="MultiPlayerButton" usage-hints="None" class="start-button" style="margin-top: 25px; margin-right: 25px; margin-bottom: 25px; margin-left: 25px;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
